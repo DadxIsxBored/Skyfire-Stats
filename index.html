@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenger Circuit AMER Apex Legends Stats</title>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.dataTables.min.css">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #111; color: #eee; }
+    h1 { font-size: 1.2rem; line-height: 1.5rem; margin-bottom: 2em; font-weight: normal; }
+    table.dataTable { width: 100% !important; border-collapse: collapse; }
+    table.dataTable th, table.dataTable td { white-space: nowrap; }
+    .dataTables_wrapper { overflow-x: auto; }
+    .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); }
+    .modal-content { background-color: #222; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 80%; max-height: 80vh; overflow-y: auto; color: white; }
+    .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
+    .close:hover, .close:focus { color: white; text-decoration: none; cursor: pointer; }
+    .filter-group { margin-bottom: 1em; }
+    .filter-group label { display: block; margin-bottom: 0.2em; }
+    .filter-group select { width: 100%; padding: 5px; }
+    .button-container { margin-top: 1em; display: flex; gap: 1em; }
+    table.dataTable thead th {background-color: #222 !important; color: #eee !important; border-bottom: 1px solid #444 !important;}
+    .fixedHeader-floating {  background-color: #222 !important;  color: #eee !important;  border-bottom: 1px solid #444 !important;  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);}
+    table.dataTable tbody tr {  background-color: #111;  color: #eee;}
+    table.dataTable td, table.dataTable th { border: 1px solid #333; padding: 8px;}
+    table.dataTable tbody tr:nth-child(even) {background-color: #181818;}
+    .filter-group select { background-color: #222; color: #eee; border: 1px solid #444;}
+    .dataTables_wrapper::-webkit-scrollbar {height: 10px;}
+    .dataTables_wrapper::-webkit-scrollbar-thumb {background-color: #444;}
+    .dataTables_wrapper::-webkit-scrollbar-track {background-color: #222;}
+  </style>
+</head>
+<body>
+
+<h1>This data is collected from Battlefy, sorted using personally created apps on my own PC and the math can be found and explained via DM on twitter or discord. All weights are determined by a survey conducted by me to the larger apex legends competitive community on the perceived importance of each stat. This table is only to show collective stats for analytics purposes, it is in no way my opinion, nor is it a list of who is and is not a better player. It is simply a statistical chart showing who has performed better, statistically. The Weighted overall Contribution Grade is simply a percentage based grading system that separates 10% SS, 5% S, 5% AA, 5% A, 10% BB, 15% B, 15% CC, 10% C, 5% DD, 5% D, 5% FF, and 10% F, and is for sorting and ease of read purposes. Furthermore, I do not intend this table to be, in any form, a definitive statement on who is and is not good or bad at the game. If at any point you see inconsistency or error in the data PLEASE reach out to me and I will fix it post haste, this includes, incorrect numbers, names, double names, changed names' stats not being combined with one another, ETC. Please enjoy and remember; this is the internet, nothing here is that serious.</h1>
+<button id="filterBtn">Filter Results</button>
+
+<div id="filterModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="filterForm"></div>
+    <div class="button-container">
+      <button id="applyFilters">Apply Filters</button>
+      <button id="resetFilters">Reset Filters</button>
+    </div>
+  </div>
+</div>
+
+<table id="statsTable" class="display" style="width:100%">
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Player</th>
+      <th>Games Played</th>
+      <th>Kills per Game</th>
+      <th>Kills</th>
+      <th>Assists</th>
+      <th>Knocks</th>
+      <th>Knock Conversion Rate</th>
+      <th>Damage Dealt</th>
+      <th>Damage to Kills ratio</th>
+      <th>Revives Given</th>
+      <th>Respawns Given</th>
+      <th>Survival Time</th>
+      <th>Combat Efficiency Ratio</th>
+      <th>Overall Percent Contribution</th>
+      <th>Weighted Overall Contribution</th>
+      <th>WOC Grade</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+  <script id="csv-data" type="text/plain">
+Rank,Player,Games Played,Kills per Game,Kills,Assists,Knocks,Knock Conversion Rate,Damage Dealt,Damage to Kills Ratio,Revives,Respawns,Survival Time,Combat Efficiency Ratio,Overall Percent Contribution,Weighted Overall Contribution,WOC Grade
+1st,TMPR aveckii,6,2.83,17,15,21,80.95%,7620,33.56%,2,4,5586,78.74%,1.82%,0.491,SS
+2nd,Floating,6,2.83,17,4,21,80.95%,5672,40.43%,13,0,4234,83.75%,1.67%,0.446,SS
+3rd,UrNm Hun7sman,6,3.33,20,11,24,83.33%,5423,45.50%,2,2,5650,89.05%,1.66%,0.489,SS
+4th,tomanycheeters,6,3.33,20,10,20,100.00%,3976,53.25%,3,2,2923,105.87%,1.63%,0.476,SS
+5th,OTL_Osivien,6,2.33,14,16,16,87.50%,6190,33.87%,3,2,4389,83.35%,1.51%,0.436,SS
+6th,bokiiyu,6,3.17,19,17,23,82.61%,8883,32.63%,2,0,5709,79.17%,1.50%,0.477,SS
+7th,khenzosss on X,6,3,18,9,22,81.82%,7929,33.95%,5,0,5426,79.60%,1.48%,0.455,SS
+8th,YUNG JIT BhundoOnTheBeat,6,2,12,14,16,75.00%,6334,30.02%,7,1,5252,72.16%,1.47%,0.414,SS
+9th,elegant platypus painting tails,6,2.83,17,16,19,89.47%,7563,33.73%,4,0,5347,84.57%,1.47%,0.458,SS
+10th,TMPR tripz,6,2.67,16,12,17,94.12%,4741,43.31%,3,1,5616,94.68%,1.45%,0.45,SS
+11th,twitch.tv/zachwkeys,6,2.33,14,11,18,77.78%,7199,30.57%,5,1,5311,74.43%,1.45%,0.425,SS
+12th,YUNG JIT JDotCaughtULackin,6,2.5,15,8,17,88.24%,5455,38.37%,2,1,5428,87.13%,1.32%,0.423,SS
+13th,INF exotiicuh,6,1.83,11,4,12,91.67%,3556,41.19%,5,2,3314,91.48%,1.31%,0.381,SS
+14th,Deadlysoos,6,1,6,11,7,85.71%,3819,26.24%,2,4,4187,76.58%,1.29%,0.352,S
+15th,TMPR CallSpades,6,1.17,7,24,10,70.00%,4436,26.32%,2,2,5580,66.12%,1.28%,0.37,S
+16th,hxted,6,2.67,16,7,18,88.89%,5850,38.24%,3,0,4222,87.47%,1.26%,0.414,S
+17th,VERB,6,1.5,9,14,14,64.29%,5887,25.71%,4,1,5608,61.84%,1.23%,0.368,S
+18th,brainsy,5,2.8,14,11,17,82.35%,5611,36.10%,2,0,3744,81.53%,1.20%,0.39,S
+19th,Adiuvant,6,2.5,15,11,19,78.95%,5042,40.25%,1,0,4317,82.28%,1.19%,0.402,S
+20th,F5 | Zaphy,6,0.67,4,5,7,57.14%,4258,17.54%,6,3,5178,51.09%,1.17%,0.303,AA
+21st,Aeo,6,1.5,9,14,11,81.82%,5983,25.41%,5,0,5389,73.36%,1.17%,0.369,AA
+22nd,orange,6,2.17,13,10,16,81.25%,3683,44.42%,3,0,2727,86.86%,1.15%,0.376,AA
+23rd,LGCY keepstar,6,1.33,8,8,16,50.00%,5598,24.45%,4,1,5465,51.35%,1.12%,0.336,AA
+24th,Darkiightttttttt,6,1.67,10,8,13,76.92%,3757,37.60%,0,2,3371,78.99%,1.11%,0.353,AA
+25th,Metsu,6,1.33,8,19,8,100.00%,4496,28.72%,3,0,5351,87.96%,1.11%,0.372,AA
+26th,eeth,6,2,12,7,16,75.00%,4663,36.82%,3,0,4391,77.12%,1.11%,0.367,A
+27th,UrNm wraiLs,6,1.67,10,14,15,66.67%,4938,31.44%,2,0,5659,67.62%,1.09%,0.363,A
+28th,F5 | Shanksoh,6,1.5,9,2,10,90.00%,6038,25.23%,1,2,5008,78.72%,1.08%,0.355,A
+29th,SES Zeddo,6,1.5,9,10,11,81.82%,3582,36.26%,2,1,3694,81.29%,1.07%,0.347,A
+30th,ImLunix,6,1.5,9,15,12,75.00%,5328,27.66%,3,0,4156,70.45%,1.07%,0.349,A
+31st,R9 || VVrapping,6,1.5,9,11,9,100.00%,3543,36.51%,1,1,4261,93.65%,1.07%,0.363,A
+32nd,LGCY THaless,6,2,12,8,12,100.00%,4007,40.41%,1,0,5520,96.50%,1.07%,0.388,BB
+33rd,Mqple :3,6,2,12,10,19,63.16%,5744,32.11%,0,0,5308,65.76%,1.05%,0.367,BB
+34th,SES Akimboh,6,1.5,9,9,11,81.82%,4826,29.69%,1,1,3669,76.49%,1.02%,0.341,BB
+35th,Pattles,6,1,6,7,7,85.71%,2466,35.52%,2,2,3270,83.36%,1.02%,0.319,BB
+36th,UrNm daviswave,6,1.33,8,20,9,88.89%,6641,21.43%,0,0,5657,75.20%,1.01%,0.363,BB
+37th,Sunsetpug,5,0.6,3,4,3,100.00%,2313,22.70%,3,3,4008,83.57%,1.01%,0.294,BB
+38th,Cates,6,1.17,7,8,12,58.33%,4867,24.56%,0,2,4367,57.02%,0.99%,0.314,BB
+39th,@Cloaked,6,1.33,8,7,8,100.00%,7051,20.44%,3,0,5386,81.92%,0.99%,0.353,BB
+40th,CharmanderSG,6,1.33,8,4,9,88.89%,4452,28.92%,2,1,5269,80.67%,0.99%,0.34,BB
+41st,INF_ACEBGremZ,6,1.17,7,8,10,70.00%,3540,30.93%,0,2,3569,69.48%,0.98%,0.315,BB
+42nd,INF VeGuc,6,0.5,3,14,4,75.00%,2836,19.32%,3,2,3326,64.36%,0.98%,0.284,BB
+43rd,YUNG JIT aswervo sellin catpiss,6,1.67,10,5,13,76.92%,4693,32.54%,2,0,5066,75.30%,0.97%,0.344,BB
+44th,Sneaky golem...,6,1.17,7,5,11,63.64%,5500,22.37%,2,1,6044,58.97%,0.97%,0.321,BB
+45th,Twitch ZS_Vessper,6,1.17,7,3,7,100.00%,2796,36.18%,0,2,3997,93.41%,0.96%,0.332,B
+46th,TTV/Breber_,6,1.33,8,3,9,88.89%,2647,40.63%,2,1,3376,89.21%,0.96%,0.327,B
+47th,LGCY pxcaaoww,5,1.2,6,5,7,85.71%,3996,25.37%,0,2,4654,75.95%,0.93%,0.309,B
+48th,Rosey,6,1,6,4,10,60.00%,7047,16.16%,2,1,6022,52.00%,0.92%,0.31,B
+49th,negative,6,0.5,3,16,4,75.00%,3023,18.35%,1,2,2723,63.64%,0.91%,0.277,B
+50th,RJ,6,0.67,4,5,5,80.00%,3943,18.68%,4,1,5483,67.24%,0.90%,0.294,B
+51st,Milez,6,1.17,7,9,12,58.33%,4947,24.26%,0,1,4391,56.80%,0.90%,0.306,B
+52nd,Matthew_Moose,6,0.33,2,2,3,66.67%,1475,23.49%,8,1,4556,61.81%,0.89%,0.257,B
+53rd,7A,5,1.6,8,10,12,66.67%,2619,40.88%,1,0,3372,74.51%,0.89%,0.308,B
+54th,groupty,6,1.17,7,2,8,87.50%,1866,45.93%,1,1,3204,92.15%,0.87%,0.314,B
+55th,immotai,6,0.5,3,3,6,50.00%,1857,26.78%,4,2,3256,53.05%,0.87%,0.25,B
+56th,slothulas,6,0.83,5,5,5,100.00%,2567,30.60%,2,1,3885,89.34%,0.87%,0.306,B
+57th,aw,5,1.4,7,13,9,77.78%,4048,28.14%,1,0,3229,72.65%,0.87%,0.303,B
+58th,serialcat,6,1.33,8,7,11,72.73%,3175,36.33%,1,0,3495,75.24%,0.84%,0.309,B
+59th,Slasher,6,1,6,15,9,66.67%,5471,19.89%,0,0,5409,59.19%,0.84%,0.309,B
+60th,FOUR MAGIC KONA,6,1.5,9,6,12,75.00%,4117,33.11%,0,0,2560,74.42%,0.82%,0.307,B
+61st,TOXIC,6,0.83,5,0,7,71.43%,2375,32.28%,0,2,4345,71.42%,0.82%,0.283,B
+62nd,FOUR MAGIC ASLEEP,6,1.33,8,3,9,88.89%,2172,45.47%,1,0,2561,92.75%,0.81%,0.31,B
+63rd,Johwny,6,1,6,11,7,85.71%,4414,23.53%,1,0,3236,74.61%,0.81%,0.298,B
+64th,@ThatsWallahi,6,0.83,5,11,6,83.33%,2780,28.94%,2,0,3260,76.96%,0.80%,0.289,CC
+65th,æ•µ,6,1.17,7,7,11,63.64%,3718,29.89%,1,0,3368,64.45%,0.79%,0.289,CC
+66th,Mari vs Asian Fine Shyts,6,0.83,5,3,9,55.56%,4464,20.23%,1,1,4604,51.99%,0.77%,0.27,CC
+67th,BuMushhTTV,6,1,6,3,7,85.71%,4501,23.18%,1,0,6002,74.35%,0.76%,0.304,CC
+68th,@ZedNr,6,1.17,7,4,7,100.00%,3511,31.10%,0,0,4187,89.70%,0.76%,0.311,CC
+69th,FluentWasTaken,5,0.6,3,0,4,75.00%,3928,14.74%,1,2,4144,61.01%,0.75%,0.248,CC
+70th,Chik1s_,6,1,6,6,7,85.71%,2919,31.76%,1,0,3270,80.61%,0.75%,0.29,CC
+71st,Legatronn,6,0.83,5,11,6,83.33%,4471,20.20%,0,0,4349,70.58%,0.74%,0.29,CC
+72nd,rCrutch,6,0.5,3,0,4,75.00%,1370,33.15%,0,2,3218,74.45%,0.72%,0.255,CC
+73rd,FOUR MAGIC CLONEZERA,6,0.5,3,5,4,75.00%,2890,19.03%,4,0,2520,64.14%,0.69%,0.241,CC
+74th,twitch/johnpork1x,5,1,5,4,6,83.33%,2166,34.32%,1,0,2944,80.89%,0.68%,0.265,CC
+75th,ZarckLee,6,0.5,3,3,7,42.86%,2395,22.09%,4,0,4970,44.84%,0.68%,0.234,CC
+76th,VOD,6,0.83,5,5,14,35.71%,6719,14.42%,0,0,4122,34.45%,0.67%,0.255,CC
+77th,Blackout,6,0.17,1,2,1,100.00%,916,19.82%,0,2,3193,81.47%,0.65%,0.242,CC
+78th,FWG racer,6,0.5,3,1,7,42.86%,2915,18.90%,2,1,3284,42.51%,0.65%,0.22,CC
+79th,twitch.tv/ctrlrsyco,6,0.5,3,9,6,50.00%,3742,15.36%,1,0,4035,44.71%,0.62%,0.234,CC
+80th,F5|GsQ BloomDion,6,0.5,3,6,6,50.00%,4235,13.82%,1,0,5372,43.59%,0.61%,0.239,CC
+81st,Derpyy,6,0.5,3,0,6,50.00%,1878,26.56%,3,0,4339,52.89%,0.60%,0.227,CC
+82nd,Aqua,6,0.5,3,1,4,75.00%,2820,19.41%,2,0,4617,64.42%,0.60%,0.243,CC
+83rd,ruszty,6,0.5,3,3,6,50.00%,3634,15.75%,2,0,4618,45.00%,0.60%,0.229,C
+84th,PoyZed,6,0.5,3,5,6,50.00%,4304,13.63%,1,0,4734,43.45%,0.59%,0.232,C
+85th,GLXY Geo,6,0.67,4,3,5,80.00%,2643,25.52%,0,0,3230,72.23%,0.57%,0.249,C
+86th,HER_Kono,6,0.33,2,1,2,100.00%,1586,22.21%,2,0,3655,83.21%,0.57%,0.244,C
+87th,GLXY Embercitys,6,0.17,1,3,4,25.00%,1774,11.32%,3,1,3252,25.01%,0.56%,0.176,C
+88th,Slaterrr,6,0.33,2,6,7,28.57%,3304,12.05%,2,0,4217,27.94%,0.55%,0.201,C
+89th,xxxlbaymax,6,0.5,3,2,3,100.00%,2156,23.96%,0,0,3826,84.49%,0.55%,0.255,C
+90th,LisTe_,6,0.5,3,1,7,42.86%,3161,17.69%,1,0,4576,41.63%,0.53%,0.216,C
+91st,F M I,6,0.33,2,0,2,100.00%,1636,21.68%,1,0,3588,82.83%,0.52%,0.238,C
+92nd,Elite Unknwn,6,0.33,2,2,2,100.00%,1264,26.38%,0,0,3517,86.25%,0.51%,0.242,C
+93rd,Elite Drizzy,6,0.5,3,1,4,75.00%,1962,25.72%,0,0,3552,69.02%,0.50%,0.231,C
+94th,WM | BearXO,4,0.25,1,0,2,50.00%,1778,11.30%,0,2,2029,41.75%,0.50%,0.161,C
+95th,DylanInstinctTTV,6,0.17,1,0,1,100.00%,1810,11.12%,2,0,3822,75.12%,0.49%,0.221,C
+96th,TTV Bubble,6,0.33,2,1,3,66.67%,1604,22.02%,1,0,4443,60.74%,0.49%,0.219,DD
+97th,borealis,6,0.33,2,4,4,50.00%,2539,15.14%,1,0,3148,44.55%,0.48%,0.198,DD
+98th,RubiieDoo,6,0.17,1,2,2,50.00%,936,19.48%,2,0,4573,47.72%,0.46%,0.195,DD
+99th,INF Retreat,6,0.33,2,1,3,66.67%,1286,26.04%,0,0,3873,63.68%,0.45%,0.215,DD
+100th,styckzz,6,0.33,2,2,3,66.67%,1883,19.39%,0,0,3912,58.82%,0.45%,0.212,DD
+101st,WC wra1th_267,6,0.17,1,2,1,100.00%,997,18.51%,0,0,3722,80.51%,0.45%,0.223,DD
+102nd,benito2fly__,6,0.33,2,0,3,66.67%,1694,21.09%,0,0,4563,60.06%,0.44%,0.214,D
+103rd,WC Carmine,6,0.17,1,1,1,100.00%,1730,11.57%,0,0,3677,75.45%,0.42%,0.216,D
+104th,ioJinx,4,0.25,1,0,1,100.00%,1567,12.62%,1,0,2867,76.22%,0.42%,0.192,D
+105th,Lethal,6,0.33,2,1,7,28.57%,2834,13.78%,0,0,4616,29.20%,0.42%,0.187,D
+106th,TTN Cynthesize,6,0.17,1,1,1,100.00%,2076,9.83%,0,0,3126,74.18%,0.41%,0.211,D
+107th,TTN HacKz,6,0.17,1,1,1,100.00%,1629,12.20%,0,0,3130,75.91%,0.41%,0.212,D
+108th,SES Vozskii,1,1,1,0,1,100.00%,589,27.77%,0,0,435,87.27%,0.39%,0.168,FF
+109th,Jay,6,0,0,3,0,0.00%,1718,0.00%,1,1,4348,0.00%,0.36%,0.126,FF
+110th,BarelyAzn,6,0.17,1,2,3,33.33%,2621,7.95%,0,0,4618,28.14%,0.36%,0.171,FF
+111th,GLXY Lando,6,0.17,1,2,3,33.33%,1990,10.22%,0,0,4355,29.79%,0.35%,0.167,FF
+112th,DarK--,6,0.17,1,1,2,50.00%,2160,9.49%,0,0,3770,40.43%,0.35%,0.174,FF
+113th,Dussy,6,0,0,3,0,0.00%,2521,0.00%,2,0,4596,0.00%,0.31%,0.126,FF
+114th,iiTzMAGICC,6,0,0,1,1,0.00%,778,0.00%,0,1,3416,0.00%,0.27%,0.106,F
+115th,slump,6,0,0,3,2,0.00%,1818,0.00%,0,0,3865,0.00%,0.22%,0.112,F
+116th,Kyrum,6,0,0,1,0,0.00%,1871,0.00%,1,0,3801,0.00%,0.22%,0.107,F
+117th,Twitch | Choppt_,6,0,0,1,1,0.00%,1414,0.00%,1,0,3215,0.00%,0.21%,0.101,F
+118th,Parcifal,6,0,0,2,0,0.00%,669,0.00%,1,0,3564,0.00%,0.21%,0.099,F
+119th,DW_UselessRoyalty,5,0,0,0,0,0.00%,47,0.00%,3,0,1462,0.00%,0.20%,0.071,F
+120th,DW_remydees,6,0,0,0,0,0.00%,208,0.00%,2,0,2145,0.00%,0.19%,0.084,F
+121st,nome_momo,1,0,0,0,0,0.00%,364,0.00%,1,1,837,0.00%,0.18%,0.033,F
+122nd,k,1,0,0,2,1,0.00%,628,0.00%,2,0,1143,0.00%,0.15%,0.036,F
+123rd,DW_MrBr0jangless,6,0,0,0,0,0.00%,220,0.00%,0,0,2070,0.00%,0.11%,0.077,F
+124th,TTN Donda,2,0,0,0,0,0.00%,222,0.00%,0,0,1042,0.00%,0.05%,0.029,F
+125th,Drip | BabyTaff,1,0,0,0,0,0.00%,240,0.00%,0,0,447,0.00%,0.02%,0.015,F
+126th,Hi im his Duo ;),1,0,0,0,0,0.00%,88,0.00%,0,0,513,0.00%,0.02%,0.015,F
+  </script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js"></script>
+<script>
+  const filterOptions = {
+    'Games Played': [1,10,20,30,40,50,60,70],
+    'Kills per Game': ['<1','1.0','2.0','3.0','4.0','5.0'],
+    'Kills': ['<10',10,50,100,150,200,250],
+    'Assists': ['<10',10,50,100,150,200,250],
+    'Knocks': ['<10',10,50,100,150,200,250],
+    'Knock Conversion Rate': ['<5%', '5%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+    'Damage Dealt': ['<225', 225, 750, 2000, 5000, 10000, 15000, 30000, 50000, 85000, 100000],
+    'Damage to Kills ratio': ['<5%', '5%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+    'Revives Given': ['<5',5,10,15,20,25,30,40,50],
+    'Respawns Given': ['<5',5,10,15,20,25,30,40],
+    'Survival Time': ['<500',500,3000,5000,9000,13000,25000,35000,55000,'65000+'],
+    'Combat Efficiency Ratio': ['<5%', '5%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+    'Overall Percent Contribution': ['<.02%', '0.02%', '0.1%', '0.2%', '0.3%', '0.4%'],
+    'Weighted Overall Contribution': ['<0.005','0.005','0.01','0.15','0.19','0.25','0.3'],
+    'WOC Grade': ['SS', 'S', 'AA', 'A', 'BB', 'B', 'CC', 'C', 'DD', 'D', 'FF', 'F']
+  };
+
+  const excludedColumns = ['Rank', 'Player'];
+  const columnMap = {};
+
+  const csv = document.getElementById('csv-data').textContent;
+  const lines = csv.trim().split('\n');
+  const headers = lines[0].split(',').slice(1).map(h => h.trim());
+  const rows = lines.slice(1).map(line => line.split(',').slice(1).map(x => x.trim()));
+
+  const tbody = document.querySelector('#statsTable tbody');
+  rows.forEach((row, i) => {
+    const tr = document.createElement('tr');
+    const rankCell = document.createElement('td');
+    rankCell.textContent = `${i + 1}${['st','nd','rd'][((i+1)%10)-1] || 'th'}`;
+    tr.appendChild(rankCell);
+    row.forEach(cell => {
+      const td = document.createElement('td');
+      td.textContent = cell;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+
+  $(document).ready(function () {
+  const table = $('#statsTable').DataTable({
+    scrollX: true,
+    paging: false,
+    order: [],
+    ordering: true,
+    fixedHeader: true,
+    columnDefs: [
+      { targets: 0, orderable: false } // disable sorting on Rank column
+    ]
+  });
+
+  // Dynamically update Rank numbers to reflect current order
+  table.on('order.dt search.dt draw.dt', function () {
+    table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+      const suffix = (n) => {
+        const j = n % 10, k = n % 100;
+        if (j === 1 && k !== 11) return 'st';
+        if (j === 2 && k !== 12) return 'nd';
+        if (j === 3 && k !== 13) return 'rd';
+        return 'th';
+      };
+      const rank = i + 1;
+      cell.innerHTML = `${rank}${suffix(rank)}`;
+    });
+  }).draw();
+
+
+    headers.forEach((header, idx) => { columnMap[header] = idx + 1; });
+
+    const filterForm = document.getElementById('filterForm');
+    for (const [label, options] of Object.entries(filterOptions)) {
+      const group = document.createElement('div');
+      group.className = 'filter-group';
+      const title = document.createElement('label');
+      title.textContent = label;
+      const select = document.createElement('select');
+      select.dataset.column = columnMap[label];
+      select.innerHTML = '<option value="">-- No Filter --</option>' + options.map(o => `<option value="${o}">${o}</option>`).join('');
+      group.appendChild(title);
+      group.appendChild(select);
+      filterForm.appendChild(group);
+    }
+
+    function applyFilters() {
+      table.rows().every(function () {
+        const row = this.data();
+        const cells = row;
+        let show = true;
+
+        $('#filterForm select').each(function () {
+          const colIdx = +this.dataset.column;
+          const val = this.value;
+          if (!val) return;
+          const cellVal = cells[colIdx];
+
+          const numVal = parseFloat(cellVal.replace('%','').replace(',',''));
+          const filterNum = parseFloat(val.replace('%','').replace(',','').replace('<',''));
+
+          if (val.startsWith('<')) {
+            if (numVal >= filterNum) show = false;
+          } else if (val.endsWith('+')) {
+            if (numVal < filterNum) show = false;
+          } else if (!isNaN(filterNum)) {
+            if (numVal < filterNum) show = false;
+          } else {
+            if (cellVal !== val) show = false;
+          }
+        });
+        this.node().style.display = show ? '' : 'none';
+      });
+    }
+
+    function resetFilters() {
+      $('#filterForm select').val('');
+      table.rows().every(function () {
+        this.node().style.display = '';
+      });
+    }
+
+    document.getElementById('filterBtn').onclick = () => document.getElementById('filterModal').style.display = 'block';
+    document.querySelector('.close').onclick = () => document.getElementById('filterModal').style.display = 'none';
+    document.getElementById('applyFilters').onclick = applyFilters;
+    document.getElementById('resetFilters').onclick = resetFilters;
+    window.onclick = function(event) {
+      if (event.target == document.getElementById('filterModal')) document.getElementById('filterModal').style.display = 'none';
+    };
+  });
+</script>
+<h1> All data gathered by Dad_is_Bored from Battlefy.com</h1>
+</body>
+</html>
